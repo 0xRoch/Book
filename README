@@ -1,1 +1,7 @@
 An online read-along book application for children.
+
+This project is using :
+- Playframework (Java)
+- JQuery
+- Less.css
+- Google App Engine
