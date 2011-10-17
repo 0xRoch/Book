@@ -19,3 +19,27 @@ body, html {
 	margin-right: auto;
 	background: url('/public/images/book.png');
 }
+
+#pages-canvas {
+	z-index: 100;
+	position: absolute;
+}
+
+#pages {
+	section {
+		background: url('/public/images/page.png') 0px -10px;
+		display: block;
+		height: 510px;
+		position: absolute;
+		left: 495px;
+		top: 10px;
+		overflow: hidden;
+		div {
+			display: block;
+			padding: 20px;
+			width: 430px;
+			height: 545px;
+			font-size: 12px;
+		}
+	}
+}

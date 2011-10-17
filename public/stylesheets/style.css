@@ -1,2 +1,4 @@
 body,html{margin:0;padding:0;background:url('/public/images/background.png');}
 #book{width:988px;height:550px;position:relative;margin-left:auto;margin-right:auto;background:url('/public/images/book.png');}
+#pages-canvas{z-index:100;position:absolute;}
+#pages section{background:url('/public/images/page.png') 0px -10px;display:block;height:510px;position:absolute;left:495px;top:10px;overflow:hidden;}#pages section div{display:block;padding:20px;width:430px;height:545px;font-size:12px;}
