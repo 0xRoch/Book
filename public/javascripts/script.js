@@ -5,9 +5,26 @@ $(function(){
 var App = {
 
   init: function() {
+    App.adminAction(),
   	App.pageFlip()
   },
-  
+
+  adminAction: function() {
+    $('.adminAction').each(function(a) {
+      var href = $(this).attr('href');
+      $(this).click( function(e) {
+          e.preventDefault();
+          $('.adminAction').each(function(b) {
+              //b.removeClass('active');
+          });
+          //$('#container').fadeTo('fast', 0.5);
+          //if ( history.pushState ) history.pushState( {}, document.title, href);
+          //a.addClass('active');
+          $('#content').load(href+' #admin-container');
+      });
+    });
+  },
+
   pageFlip: function() {
 	// Dimensions of the whole book
 	var BOOK_WIDTH = 988;

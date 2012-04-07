@@ -2,6 +2,7 @@
 
 @error: #D83A2E;
 @success: #46A546;
+@gray: #EEE;
 
 /* -- Reset -- */
 
@@ -9,6 +10,25 @@ body, html {
 	margin: 0;
 	padding: 0;
 	background: url('/public/images/background.png');
+}
+
+.rounded-corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+#admin {
+    #admin-container {
+        padding-left: 20px;
+        padding-right: 20px;
+        .pagination {
+            height: 100%;
+        }
+    }
+    width: 1000px;
+    background-color: @gray;
+    .rounded-corners(10px)
 }
 
 #book {

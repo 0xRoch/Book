@@ -10,7 +10,13 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+        List<Book> books = Book.books();
+        render(books);
+    }
+
+    public static void book(Long id) {
+        Book book = Book.findById(id);
+        render(book);
     }
 
 }

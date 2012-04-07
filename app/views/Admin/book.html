@@ -1,0 +1,69 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div id="admin" class="container">
+    #{adminNav /}
+    <div id="content">
+        <div id="admin-container">
+            <div class="span7">
+                <div class="well span6">
+                    <header class="jumbotron subhead" id="overview">
+                      <div class="page-header">
+                        #{if book == null}
+                            <h1>Add a book</h1>
+                        #{/if}#{else}
+                            <h1>Edit a book</h1>
+                        #{/else}
+                      </div>
+                    </header>
+                    <form action="@{Admin.submitBook}">
+                    #{if book != null}
+                        <input type="hidden" name="id" value="${book.id}">
+                    #{/if}
+                        <table>
+                            <tbody>
+                                <tr><th><label>Name : </label></th><td><input type="text" name="name" value="${book != null ? book.name : ''}"></td></tr>
+                                <tr>
+                                    <td>
+                                        #{if book != null}<a href="@{Admin.deleteBook(book.id)}" class="btn btn-danger primary">Delete</a>#{/if}
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="#{if book == null}Add#{/if}#{else}Save#{/else}" class="btn primary btn-success">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                #{if book != null}
+                <div class="well span6">
+                    <h2>Manage Pages</h2>
+                    <div class="pagination">
+                        <ul>
+                          #{list items:pages, as:'page'}
+                              <li><a href="@{Admin.page(page.id)}">${page.id}</a></li>
+                          #{/list}
+                          <li><a href="@{Admin.submitPage(book.id)}" class="btn-success">Add a page</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="page-container" class="well span6"></div>
+                #{/if}
+            </div>
+            #{if book != null}
+            <div class="span4">
+              <div class="well">
+                <h2>Upload a book cover</h2>
+                  <form action="@{Admin.uploadCover}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="${book.id}" />
+                    <input type="file" name="picture" onchange="this.form.submit()" />
+                  </form>
+                #{if book.pictureHash != 0}
+                    <img class="thumbnail" src="@{Pictures.showThumb(book.pictureHash)}" />
+                #{/if}
+              </div>
+            </div>
+            #{/if}
+        </div>
+    </div>
+ </div>
