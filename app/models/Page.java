@@ -25,11 +25,16 @@ public class Page extends Model {
     public Book book;
 
     @EmbedIgnore
-    @Index("pictureHash")
-    public int pictureHash;
+    @Index("pictureHash1")
+    public int pictureHash1;
 
-    @Embedded
-    public List<Sentence> sentences;
+    @EmbedIgnore
+    @Index("pictureHash2")
+    public int pictureHash2;
+
+    @EmbedIgnore
+    @Index("pictureHash3")
+    public int pictureHash3;
 
     public Page(Book book) {
         this.book = book;

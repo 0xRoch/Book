@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.google.appengine.repackaged.com.google.common.base.Flag;
 import play.cache.Cache;
-import siena.Id;
+import siena.*;
 import siena.Index;
 import siena.Model;
 import siena.Query;
@@ -22,16 +22,27 @@ public class Sentence extends Model {
 
     public String text;
 
+    @Column("page")
+    public Page page;
+
     @EmbedIgnore
     @Index("audioHash")
     public int audioHash;
 
-    static Query<Page> all() {
-        return Model.all(Page.class);
+    public Sentence(Page page) {
+        this.page = page;
     }
 
-    public static Page findById(Long id) {
+    static Query<Sentence> all() {
+        return Model.all(Sentence.class);
+    }
+
+    public static Sentence findById(Long id) {
         return all().filter("id", id).get();
     }
 
+    public static List<Sentence> listByPage(Long id) {
+        Page page = Page.findById(id);
+        return all().filter("page", page).fetch();
+    }
 }

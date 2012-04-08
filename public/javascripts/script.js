@@ -5,12 +5,12 @@ $(function(){
 var App = {
 
   init: function() {
-    App.adminAction(),
+    App.admin('body'),
   	App.pageFlip()
   },
 
-  adminAction: function() {
-    $('.adminAction').each(function(a) {
+  admin: function(elem) {
+    $(elem+' .adminAction').each(function(a) {
       var href = $(this).attr('href');
       $(this).click( function(e) {
           e.preventDefault();
@@ -20,8 +20,22 @@ var App = {
           //$('#container').fadeTo('fast', 0.5);
           //if ( history.pushState ) history.pushState( {}, document.title, href);
           //a.addClass('active');
-          $('#content').load(href+' #admin-container');
+          $('#content').load(href+' #admin-container', function(XMLHttpRequest) {
+            App.admin('#content')
+          });
       });
+    });
+    $(elem+' .adminPage').each(function(a) {
+        var href = $(this).attr('href');
+        $(this).click( function(e) {
+          e.preventDefault();
+          $('#page-container').load(href, function(XMLHttpRequest) {
+              App.admin('#page-container')
+          });
+      });
+    });
+    $(elem+' .popup').each(function(a) {
+        a.modal();
     });
   },
 

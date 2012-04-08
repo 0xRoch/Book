@@ -41,7 +41,7 @@
                     <div class="pagination">
                         <ul>
                           #{list items:pages, as:'page'}
-                              <li><a href="@{Admin.page(page.id)}">${page.id}</a></li>
+                              <li><a class="adminPage" href="@{Admin.page(page.id)}">${page.id}</a></li>
                           #{/list}
                           <li><a href="@{Admin.submitPage(book.id)}" class="btn-success">Add a page</a></li>
                         </ul>
