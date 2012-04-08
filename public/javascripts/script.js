@@ -5,8 +5,19 @@ $(function(){
 var App = {
 
   init: function() {
+    App.pageFlip(),
     App.admin('body'),
-  	App.pageFlip()
+    App.lazyLoad()
+  },
+
+  lazyLoad: function() {
+    $('.lazyLoad').each(function(a) {
+        $(this).removeClass('lazyLoad');
+        var href = $(this).data('url');
+        $(this).load(href, function(XMLHttpRequest) {
+            App.lazyLoad();
+        });
+    });
   },
 
   admin: function(elem) {
