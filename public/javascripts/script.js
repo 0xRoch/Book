@@ -5,9 +5,9 @@ $(function(){
 var App = {
 
   init: function() {
-    App.pageFlip(),
     App.admin('body'),
-    App.lazyLoad()
+    App.lazyLoad(),
+    App.pageFlip()
   },
 
   lazyLoad: function() {
@@ -25,12 +25,6 @@ var App = {
       var href = $(this).attr('href');
       $(this).click( function(e) {
           e.preventDefault();
-          $('.adminAction').each(function(b) {
-              //b.removeClass('active');
-          });
-          //$('#container').fadeTo('fast', 0.5);
-          //if ( history.pushState ) history.pushState( {}, document.title, href);
-          //a.addClass('active');
           $('#content').load(href+' #admin-container', function(XMLHttpRequest) {
             App.admin('#content')
           });

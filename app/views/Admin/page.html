@@ -1,8 +1,8 @@
-<h2>Manage page ${page.id}</h2>
+<h2>Manage page ${p}</h2>
 
 <h3>Sentences :</h3>
 #{list items:sentences, as:'sentence'}
-  <li><a class="adminPage" href="@{Admin.sentence(sentence.id)}">${sentence.id}</a></li>
+  <li><a class="adminPage" href="@{Admin.sentence(sentence.id)}">${sentence}</a></li>
 #{/list}
 <a href="@{Admin.submitSentence(page.id)}" class="btn btn-success primary popup">Add a sentence</a>
 

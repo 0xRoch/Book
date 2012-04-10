@@ -1,8 +1,11 @@
 /* -- Variables -- */
 
+@highlight: yellow;
 @error: #D83A2E;
 @success: #46A546;
 @gray: #EEE;
+
+@import url(http://fonts.googleapis.com/css?family=Fondamento:400italic);
 
 /* -- Reset -- */
 
@@ -11,6 +14,8 @@ body, html {
 	padding: 0;
 	background: url('/public/images/background.png');
 }
+
+.highlight { @highlight }
 
 .rounded-corners (@radius: 5px) {
   border-radius: @radius;
@@ -56,10 +61,11 @@ body, html {
 		overflow: hidden;
 		div {
 			display: block;
-			padding: 20px;
-			width: 430px;
-			height: 545px;
-			font-size: 12px;
+            padding: 35px;
+            width: 410px;
+            height: 450px;
+			font-size: 15px;
+            font-family: 'Fondamento', cursive;
 		}
 	}
 }

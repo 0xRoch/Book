@@ -45,4 +45,13 @@ public class Sentence extends Model {
         Page page = Page.findById(id);
         return all().filter("page", page).fetch();
     }
+
+    @Override
+    public String toString() {
+        if (text != null) {
+            return text;
+        } else {
+            return "Sentence "+id;
+        }
+    }
 }

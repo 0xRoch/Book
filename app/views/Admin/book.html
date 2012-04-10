@@ -40,8 +40,10 @@
                     <h2>Manage Pages</h2>
                     <div class="pagination">
                         <ul>
+                          %{int p = 0}%
                           #{list items:pages, as:'page'}
-                              <li><a class="adminPage" href="@{Admin.page(page.id)}">${page.id}</a></li>
+                              %{p++}%
+                              <li><a class="adminPage" href="@{Admin.page(page.id, p)}">${p}</a></li>
                           #{/list}
                           <li><a href="@{Admin.submitPage(book.id)}" class="btn-success">Add a page</a></li>
                         </ul>

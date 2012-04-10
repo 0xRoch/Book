@@ -1,0 +1,16 @@
+<h2>Manage a sentence</h2>
+
+<form action="@{Admin.updateSentence}">
+    <input type="hidden" name="id" value="${sentence.id}">
+    <table>
+        <tbody>
+            <tr><th><label>Text : </label></th><td><input type="text" name="text" value="${sentence != null ? sentence.text : ''}"></td></tr>
+            <tr><th><label>Audio : </label></th><td><input type="file" accept="image/*" name="audio" id="capture"></td></tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Save" class="btn primary btn-success">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
