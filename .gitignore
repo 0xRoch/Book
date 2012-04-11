@@ -1,0 +1,13 @@
+.DS_Store
+.classpath
+.project
+.settings/
+Book.iml
+Book.ipr
+Book.iws
+book.psd
+lib/
+logs/
+tmp/
+modules/
+precompiled/
