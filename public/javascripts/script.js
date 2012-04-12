@@ -3,7 +3,6 @@ $(function(){
 });
 
 var App = {
-
   playlist: [],
 
   init: function() {
@@ -19,6 +18,11 @@ var App = {
         var href = $(this).data('url');
         $(this).load(href, function(XMLHttpRequest) {
             App.lazyLoad();
+        });
+    });
+    $('.sentence').each(function(a) {
+        App.playlist.add({
+          mp3: $(this).data('audio')
         });
     });
   },

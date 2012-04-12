@@ -9,5 +9,5 @@
 #{/if}
 
 #{list items:sentences, as:'sentence'}
-    <span id="${sentence.id}" class="lazyLoad sentence" data-url="@{Application.sentence(sentence.id)}"></span>
+    <span id="${sentence.id}" class="lazyLoad sentence" data-audio="@{Application.audio(sentence.audioHash)}">${sentence.text}</span>
 #{/list}

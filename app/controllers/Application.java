@@ -2,7 +2,7 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
-
+import java.io.*;
 import java.util.*;
 
 import models.*;
@@ -26,9 +26,10 @@ public class Application extends Controller {
         render(page, sentences);
     }
 
-    public static void sentence(Long id) {
-        Sentence sentence = Sentence.findById(id);
-        render(sentence);
+    public static void audio(int hash) {
+        Audio audio = Audio.findByAudioHash(hash);
+        notFoundIfNull(audio);
+        InputStream is = new ByteArrayInputStream(audio.audio.getBytes());
+        renderBinary(is, "audio", "audio/mpeg", true);
     }
-
 }
