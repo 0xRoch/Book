@@ -1,13 +1,16 @@
 $(function(){
-  App.init()
+  App.init();
 });
 
 var App = {
 
+  playlist: [],
+
   init: function() {
     App.admin('body'),
     App.lazyLoad(),
-    App.pageFlip()
+    App.pageFlip(),
+    App.audio()
   },
 
   lazyLoad: function() {
@@ -258,5 +261,16 @@ var App = {
   		
   		context.restore();
   	}
+  },
+
+  audio: function() {
+      App.playlist = new jPlayerPlaylist({
+          jPlayer: "#audio",
+          cssSelectorAncestor: "#audio-container"
+      }, [], {
+          swfPath: "js",
+          supplied: "oga, mp3",
+          wmode: "window"
+      });
   }
 }

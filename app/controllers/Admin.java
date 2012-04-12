@@ -106,6 +106,9 @@ public class Admin extends Controller {
 
     public static void uploadAudio(Long id, Blob audio) {
         Sentence sentence = Sentence.findById(id);
-
+        Audio newAudio = new Audio(audio);
+        newAudio.update();
+        sentence.audioHash = newAudio.audioHash;
+        sentence.update();
     }
  }

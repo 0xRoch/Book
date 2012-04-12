@@ -5,7 +5,6 @@
     <table>
         <tbody>
             <tr><th><label>Text : </label></th><td><input type="text" name="text" value="${sentence != null ? sentence.text : ''}"></td></tr>
-            <tr><th><label>Audio : </label></th><td><input type="file" accept="image/*" name="audio" id="capture"></td></tr>
             <tr>
                 <td>
                     <input type="submit" value="Save" class="btn primary btn-success">
@@ -13,4 +12,11 @@
             </tr>
         </tbody>
     </table>
+</form>
+
+<h3>Upload audio :</h3>
+
+<form action="@{Admin.uploadAudio}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="${sentence.id}" />
+    <input type="file" name="audio" onchange="this.form.submit()" />
 </form>
