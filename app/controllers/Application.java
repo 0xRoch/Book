@@ -26,10 +26,16 @@ public class Application extends Controller {
         render(page, sentences);
     }
 
-    public static void audio(int hash) {
-        Audio audio = Audio.findByAudioHash(hash);
-        notFoundIfNull(audio);
-        InputStream is = new ByteArrayInputStream(audio.audio.getBytes());
-        renderBinary(is, "audio", "audio/mpeg", true);
+    public static void audio(Long id) {
+        Sentence sentence = Sentence.findById(id);
+        if (sentence.audioHash != 0) {
+            Audio audio = Audio.findByAudioHash(sentence.audioHash);
+            InputStream is = new ByteArrayInputStream(audio.audio.getBytes());
+            renderBinary(is, "audio", "audio/mpeg", true);
+        } else {
+            Page page = Page.findById(sentence.page.id);
+            Book book = Book.findById(page.book.id);
+            redirect("http://translate.google.com/translate_tts?tl="+book.language.iso+"&q="+sentence.text);
+        }
     }
 }

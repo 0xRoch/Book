@@ -15,7 +15,14 @@ body, html {
 	background: url('/public/images/background.png');
 }
 
-.highlight { background-color: @highlight; padding-left: 5px; padding-right: 5px; .rounded-corners }
+.highlight {
+    background-color: @highlight;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: absolute;
+    width: 100%;
+    .rounded-corners
+}
 
 .rounded-corners (@radius: 5px) {
   border-radius: @radius;

@@ -1,0 +1,46 @@
+#{extends 'main.html' /}
+#{set title:'Manage languages' /}
+
+<div id="admin" class="container">
+    #{adminNav /}
+    <div id="content">
+        <div id="admin-container">
+            <div class="span7">
+                <div class="well span6">
+                    <header class="jumbotron subhead" id="overview">
+                      <div class="page-header">
+                        <h1>Current languages :</h1>
+                      </div>
+                    </header>
+                    #{list items:languages, as:'language'}
+                        <div class="btn-group">
+                          <button class="btn">${language.name}</button>
+                          <button class="btn btn-danger"><a href="@{Admin.deleteLanguage(language.id)}">Delete</a></button>
+                        </div>
+                    #{/list}
+                </div>
+            </div>
+            <div class="span5">
+                <div class="well">
+                <h2>Add a language</h2>
+                    <form action="@{Admin.submitLanguage}">
+                        <table>
+                            <tbody>
+                                <tr><th><label>Name : </label></th><td><input type="text" name="name" value="${book != null ? book.name : ''}"></td></tr>
+                                <tr><th><label>Iso : </label></th><td><input type="text" name="iso" value="${book != null ? book.name : ''}"></td></tr>
+                                <tr>
+                                    <td>
+                                        #{if book != null}<a href="@{Admin.deleteBook(book.id)}" class="btn btn-danger primary">Delete</a>#{/if}
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="#{if book == null}Add#{/if}#{else}Save#{/else}" class="btn primary btn-success">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>

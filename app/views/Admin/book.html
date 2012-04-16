@@ -23,6 +23,15 @@
                         <table>
                             <tbody>
                                 <tr><th><label>Name : </label></th><td><input type="text" name="name" value="${book != null ? book.name : ''}"></td></tr>
+                                <tr><th><label>Language : </label></th>
+                                    <td>
+                                        <select name="languageId">
+                                            #{list items:languages, as:'language'}
+                                                <option value="${languages.id}">${language}</option>
+                                            #{/list}
+                                        </select>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         #{if book != null}<a href="@{Admin.deleteBook(book.id)}" class="btn btn-danger primary">Delete</a>#{/if}

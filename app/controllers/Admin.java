@@ -16,23 +16,43 @@ public class Admin extends Controller {
         render(books);
     }
 
+    public static void languages() {
+        List<Language> languages = Language.languages();
+        render(languages);
+    }
+
+    public static void submitLanguage(String name, String iso) {
+        Language language = new Language(name, iso);
+        language.update();
+        languages();
+    }
+
+    public static void deleteLanguage(Long id) {
+        Language language = Language.findById(id);
+        language.delete();
+        languages();
+    }
+
     public static void book(Long id) {
+        List<Language> languages = Language.languages();
         if (id == null) {
-            render();
+            render(languages);
         } else {
             Book book = Book.findById(id);
             List<Page> pages = Page.listByBook(id);
-            render(book, pages);
+            render(book, pages, languages);
         }
     }
 
-    public static void submitBook(Long id, String name) {
+    public static void submitBook(Long id, String name, Long languageId) {
         Book currentBook;
         if (id == null) {
             currentBook = new Book(name);
         } else {
             currentBook = Book.findById(id);
         }
+        Language language = Language.findById(languageId);
+        currentBook.language = language;
         currentBook.update();
         book(currentBook.id);
     }

@@ -21,6 +21,9 @@ public class Book extends Model {
     
     public String name;
 
+    @Column("language")
+    public Language language;
+
     @EmbedIgnore
     @Index("pictureHash")
     public int pictureHash;
