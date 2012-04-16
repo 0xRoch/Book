@@ -70,9 +70,6 @@ var App = {
             }
         });
     });
-    $(elem+' .popup').each(function(a) {
-        a.modal();
-    });
   },
 
   pageFlip: function() {
@@ -93,48 +90,52 @@ var App = {
   	var page = 0;
   	
   	var canvas = document.getElementById( "pages-canvas" );
-  	var context = canvas.getContext( "2d" );
-  	
-  	var mouse = { x: 0, y: 0 };
-  	
-  	var flips = [];
-  	
-  	var book = document.getElementById( "book" );
-  	
-  	// List of all the page elements in the DOM
-  	var pages = book.getElementsByTagName( "section" );
-  	
-  	// Organize the depth of our pages and create the flip definitions
-  	for( var i = 0, len = pages.length; i < len; i++ ) {
-  		pages[i].style.zIndex = len - i;
-  		
-  		flips.push( {
-  			// Current progress of the flip (left -1 to right +1)
-  			progress: 1,
-  			// The target value towards which progress is always moving
-  			target: 1,
-  			// The page DOM element related to this flip
-  			page: pages[i], 
-  			// True while the page is being dragged
-  			dragging: false
-  		} );
-  	}
-  	
-  	// Resize the canvas to match the book size
-  	canvas.width = BOOK_WIDTH + ( CANVAS_PADDING * 2 );
-  	canvas.height = BOOK_HEIGHT + ( CANVAS_PADDING * 2 );
-  	
-  	// Offset the canvas so that it's padding is evenly spread around the book
-  	canvas.style.top = -CANVAS_PADDING + "px";
-  	canvas.style.left = -CANVAS_PADDING + "px";
-  	
-  	// Render the page flip 60 times a second
-  	setInterval( render, 1000 / 60 );
-  	
-  	document.addEventListener( "mousemove", mouseMoveHandler, false );
-  	document.addEventListener( "mousedown", mouseDownHandler, false );
-  	document.addEventListener( "mouseup", mouseUpHandler, false );
-  	
+
+    if (canvas != undefined) {
+
+        var context = canvas.getContext( "2d" );
+
+        var mouse = { x: 0, y: 0 };
+
+        var flips = [];
+
+        var book = document.getElementById( "book" );
+
+        // List of all the page elements in the DOM
+        var pages = book.getElementsByTagName( "section" );
+
+        // Organize the depth of our pages and create the flip definitions
+        for( var i = 0, len = pages.length; i < len; i++ ) {
+            pages[i].style.zIndex = len - i;
+
+            flips.push( {
+                // Current progress of the flip (left -1 to right +1)
+                progress: 1,
+                // The target value towards which progress is always moving
+                target: 1,
+                // The page DOM element related to this flip
+                page: pages[i],
+                // True while the page is being dragged
+                dragging: false
+            } );
+        }
+
+        // Resize the canvas to match the book size
+        canvas.width = BOOK_WIDTH + ( CANVAS_PADDING * 2 );
+        canvas.height = BOOK_HEIGHT + ( CANVAS_PADDING * 2 );
+
+        // Offset the canvas so that it's padding is evenly spread around the book
+        canvas.style.top = -CANVAS_PADDING + "px";
+        canvas.style.left = -CANVAS_PADDING + "px";
+
+        // Render the page flip 60 times a second
+        setInterval( render, 1000 / 60 );
+
+        document.addEventListener( "mousemove", mouseMoveHandler, false );
+        document.addEventListener( "mousedown", mouseDownHandler, false );
+        document.addEventListener( "mouseup", mouseUpHandler, false );
+    }
+
   	function mouseMoveHandler( event ) {
   		// Offset mouse position so that the top of the book spine is 0,0
   		mouse.x = event.clientX - book.offsetLeft - ( BOOK_WIDTH / 2 );

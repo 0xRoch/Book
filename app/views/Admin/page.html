@@ -4,7 +4,10 @@
 #{list items:sentences, as:'sentence'}
   <li><a class="adminPage" href="@{Admin.sentence(sentence.id)}">${sentence}</a></li>
 #{/list}
-<a href="@{Admin.submitSentence(page.id)}" class="btn btn-success primary popup">Add a sentence</a>
+<form class="adminCallback" data-callback="@{Admin.sentence(sentence.id)}" action="@{Admin.submitSentence}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="${page.id}" />
+    <input type="submit" class="btn btn-success primary" value="Add a sentence"/>
+</form>
 
 <h3>Upload up to 3 pictures :</h3>
 <form class="uploadForm" action="@{Admin.uploadPagePicture}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
