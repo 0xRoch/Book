@@ -12,6 +12,20 @@ var App = {
     App.audio()
   },
 
+  notify: function(msg) {
+      $('#admin').append('<div id="notification" class="span4 alert alert-success">'+msg+'</div>');
+      setTimeout(function() {
+          $('#notification').fadeOut('fast');
+          $('#notification').remove();
+      }, 10000); // <-- time in milliseconds
+  },
+
+  upload: function(elem) {
+    $(elem).ajaxForm({
+        success:App.notify("Your file has been uploaded")
+    }).submit();
+  },
+
   lazyLoad: function() {
     $('.lazyLoad').each(function(a) {
         $(this).removeClass('lazyLoad');

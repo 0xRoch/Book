@@ -7,20 +7,20 @@
 <a href="@{Admin.submitSentence(page.id)}" class="btn btn-success primary popup">Add a sentence</a>
 
 <h3>Upload up to 3 pictures :</h3>
-<form action="@{Admin.uploadPagePicture}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form class="uploadForm" action="@{Admin.uploadPagePicture}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${page.id}" />
     <input type="hidden" name="pos" value="1" />
-    <input type="file" name="picture" onchange="this.form.submit()" />
+    <input type="file" name="picture" onchange="App.upload(this.form)" />
 </form>
-<form action="@{Admin.uploadPagePicture}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form class="uploadForm" action="@{Admin.uploadPagePicture}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${page.id}" />
     <input type="hidden" name="pos" value="2" />
-    <input type="file" name="picture" onchange="this.form.submit()" />
+    <input type="file" name="picture" onchange="App.upload(this.form)" />
 </form>
-<form action="@{Admin.uploadPagePicture}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form class="uploadForm" action="@{Admin.uploadPagePicture}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${page.id}" />
     <input type="hidden" name="pos" value="3" />
-    <input type="file" name="picture" onchange="this.form.submit()" />
+    <input type="file" name="picture" onchange="App.upload(this.form)" />
 </form>
 
 <a href="@{Admin.deletePage(page.id)}" class="btn btn-danger primary">Delete page</a>

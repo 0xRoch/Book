@@ -1,15 +1,17 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
-
-<div>
-    #{list items:books, as:'book'}
-        <div class="span4">
-            <a href="@{Application.book(book.id)}">
-                <h3>${book.name}</h3>
-                #{if book.pictureHash != 0}
-                    <img src="@{Pictures.showThumb(book.pictureHash)}" />
-                #{/if}
-            </a>
-        </div>
-    #{/list}
+#{nav /}
+<div id="index" class="container">
+    <div id="index-container">
+        #{list items:books, as:'book'}
+            <div class="span4">
+                <a href="@{Application.book(book.id)}">
+                    <h3>${book.name}</h3>
+                    #{if book.pictureHash != 0}
+                        <img src="@{Pictures.showThumb(book.pictureHash)}" />
+                    #{/if}
+                </a>
+            </div>
+        #{/list}
+    </div>
 </div>

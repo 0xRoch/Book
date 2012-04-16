@@ -16,7 +16,7 @@
 
 <h3>Upload audio :</h3>
 
-<form action="@{Admin.uploadAudio}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form class="uploadForm" action="@{Admin.uploadAudio}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${sentence.id}" />
-    <input type="file" name="audio" onchange="this.form.submit()" />
+    <input type="file" name="audio" onchange="App.upload(this.form)" />
 </form>

@@ -21,7 +21,7 @@ public class Pictures extends Controller {
     public static InputStream showThumb(int hash) {
         Picture picture = Picture.findByPictureHash(hash);
         notFoundIfNull(picture);
-        InputStream in = new ByteArrayInputStream(Pictures.resizePicture(picture.picture.getBytes(), 260, 300));
+        InputStream in = new ByteArrayInputStream(Pictures.resizePicture(picture.picture.getBytes(), 200, 200));
     	return in;
     }
     

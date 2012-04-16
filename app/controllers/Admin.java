@@ -34,7 +34,7 @@ public class Admin extends Controller {
             currentBook = Book.findById(id);
         }
         currentBook.update();
-        book(id);
+        book(currentBook.id);
     }
 
     public static void deleteBook(Long id) {
