@@ -1,6 +1,6 @@
 <h2>Manage a sentence</h2>
 
-<form action="@{Admin.updateSentence}">
+<form action="@{Admin.updateSentence}" class="adminCallback" data-callback="@{Admin.sentence(sentence.id)}">
     <input type="hidden" name="id" value="${sentence.id}">
     <table>
         <tbody>

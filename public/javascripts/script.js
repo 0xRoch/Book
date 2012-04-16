@@ -17,7 +17,7 @@ var App = {
       setTimeout(function() {
           $('#notification').fadeOut('fast');
           $('#notification').remove();
-      }, 10000); // <-- time in milliseconds
+      }, 5000);
   },
 
   upload: function(elem) {
@@ -59,6 +59,16 @@ var App = {
               App.admin('#page-container')
           });
       });
+    });
+    $(elem+' .adminCallback').each(function(a) {
+        var href = $(this).data('callback');
+        $(this).ajaxForm({
+            success:function() {
+                $('#page-container').load(href, function(XMLHttpRequest) {
+                    App.admin('#page-container')
+                });
+            }
+        });
     });
     $(elem+' .popup').each(function(a) {
         a.modal();
