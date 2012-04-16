@@ -1,6 +1,6 @@
 /* -- Variables -- */
 
-@highlight: yellow;
+@highlight: rgba(255,255,0,0.5);
 @error: #D83A2E;
 @success: #46A546;
 @gray: #EEE;
@@ -15,7 +15,7 @@ body, html {
 	background: url('/public/images/background.png');
 }
 
-.highlight { @highlight }
+.highlight { background-color: @highlight; padding-left: 5px; padding-right: 5px; .rounded-corners }
 
 .rounded-corners (@radius: 5px) {
   border-radius: @radius;
@@ -60,6 +60,7 @@ body, html {
 		top: 10px;
 		overflow: hidden;
 		div {
+            line-height: 24px;
 			display: block;
             padding: 35px;
             width: 410px;

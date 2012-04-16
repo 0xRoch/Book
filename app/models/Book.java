@@ -12,6 +12,7 @@ import siena.Query;
 import siena.embed.EmbedIgnore;
 import siena.embed.Embedded;
 import siena.embed.EmbeddedMap;
+import siena.core.lifecycle.PostDelete;
 
 public class Book extends Model {
 
@@ -32,7 +33,7 @@ public class Book extends Model {
     }
 
     public Book(String name) {
-           this.name = name;
+        this.name = name;
     }
 
     public static Book findById(Long id) {
@@ -50,5 +51,15 @@ public class Book extends Model {
     @Override
     public String toString() {
         return name;
+    }
+
+    @PostDelete
+    private void removeOrphans() {
+        List<Page> pages = Page.listByBook(this.id);
+        for (Page page:pages) {
+            page.delete();
+        }
+        Picture picture = Picture.findByPictureHash(this.pictureHash);
+        picture.delete();
     }
 }

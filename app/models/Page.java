@@ -14,6 +14,7 @@ import siena.Query;
 import siena.embed.EmbedIgnore;
 import siena.embed.Embedded;
 import siena.embed.EmbeddedMap;
+import siena.core.lifecycle.PostDelete;
 
 @EmbeddedMap
 public class Page extends Model {
@@ -53,4 +54,17 @@ public class Page extends Model {
         return all().filter("book", book).fetch();
     }
 
+    @PostDelete
+    private void removeOrphans() {
+        List<Sentence> sentences = Sentence.listByPage(this.id);
+        for (Sentence sentence:sentences) {
+            sentence.delete();
+        }
+        Picture picture1 = Picture.findByPictureHash(this.pictureHash1);
+        picture1.delete();
+        Picture picture2 = Picture.findByPictureHash(this.pictureHash2);
+        picture2.delete();
+        Picture picture3 = Picture.findByPictureHash(this.pictureHash3);
+        picture3.delete();
+    }
 }

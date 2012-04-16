@@ -8,6 +8,8 @@
     <img class="thumbnail" src="@{Pictures.showThumb(page.pictureHash3)}" />
 #{/if}
 
+%{int sentenceCount = 0}%
 #{list items:sentences, as:'sentence'}
-    <span id="${sentence.id}" class="lazyLoad sentence" data-audio="@{Application.audio(sentence.audioHash)}">${sentence.text}</span>
+    <span id="${sentenceCount}" class="lazyLoad sentence" data-audio="@{Application.audio(sentence.audioHash)}">${sentence.text}</span>
+%{sentenceCount++}%
 #{/list}

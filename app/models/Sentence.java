@@ -13,6 +13,7 @@ import siena.Query;
 import siena.embed.EmbedIgnore;
 import siena.embed.Embedded;
 import siena.embed.EmbeddedMap;
+import siena.core.lifecycle.PostDelete;
 
 @EmbeddedMap
 public class Sentence extends Model {
@@ -53,5 +54,11 @@ public class Sentence extends Model {
         } else {
             return "Sentence "+id;
         }
+    }
+
+    @PostDelete
+    private void removeOrphans() {
+        Audio audio = Audio.findByAudioHash(this.audioHash);
+        audio.delete();
     }
 }
