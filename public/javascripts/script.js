@@ -134,6 +134,22 @@ var App = {
         document.addEventListener( "mousemove", mouseMoveHandler, false );
         document.addEventListener( "mousedown", mouseDownHandler, false );
         document.addEventListener( "mouseup", mouseUpHandler, false );
+
+        $('.prevPage').click( function(e) {
+          e.preventDefault();
+          flips[page].target = 1;
+          page = Math.max( page - 1, 0 );
+          flips[page].dragging = false;
+        });
+
+        $('.nextPage').click( function(e) {
+          e.preventDefault();
+          if (page + 1 < flips.length) {
+              flips[page].target = -1;
+              page = Math.min( page + 1, flips.length );
+              flips[page].dragging = false;
+          }
+        });
     }
 
   	function mouseMoveHandler( event ) {
@@ -179,7 +195,7 @@ var App = {
   	}
   	
   	function render() {
-  		
+
   		// Reset all pixels in the canvas
   		context.clearRect( 0, 0, canvas.width, canvas.height );
   		

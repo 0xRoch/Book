@@ -4,7 +4,7 @@
 #{list items:sentences, as:'sentence'}
   <li><a class="adminPage" href="@{Admin.sentence(sentence.id)}">${sentence}</a></li>
 #{/list}
-<form class="adminCallback" data-callback="@{Admin.sentence(sentence.id)}" action="@{Admin.submitSentence}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form class="adminCallback" data-callback="@{Admin.sentence}" action="@{Admin.submitSentence}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${page.id}" />
     <input type="submit" class="btn btn-success primary" value="Add a sentence"/>
 </form>

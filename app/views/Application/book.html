@@ -1,7 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 #{nav /}
+
 <div id="book">
+    <a href="#" class="btn prevPage">« Previous Page</a>
+    <a href="#" class="btn nextPage">Next Page »</a>
 	<canvas id="pages-canvas"></canvas>
 	<div id="pages">
         #{list items:pages, as:'page'}
