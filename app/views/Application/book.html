@@ -7,10 +7,12 @@
     <a href="#" class="btn nextPage">Next Page »</a>
 	<canvas id="pages-canvas"></canvas>
 	<div id="pages">
+        %{int pageCount = 0}%
         #{list items:pages, as:'page'}
             <section style="z-index: 2;">
-                <div class="lazyLoad" data-url="@{Application.page(page.id)}"></div>
+                <div id="page-${pageCount}" class="lazyLoad" data-url="@{Application.page(page.id)}"></div>
             </section>
+        %{pageCount++}%
         #{/list}
 	</div>
 </div>

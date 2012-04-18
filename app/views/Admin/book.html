@@ -27,7 +27,7 @@
                                     <td>
                                         <select name="languageId">
                                             #{list items:languages, as:'language'}
-                                                <option value="${languages.id}">${language}</option>
+                                                <option value="${language.id}" #{if language.id == book.language.id}selected="selected"#{/if}>${language}</option>
                                             #{/list}
                                         </select>
                                     </td>

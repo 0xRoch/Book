@@ -35,7 +35,8 @@ public class Application extends Controller {
         } else {
             Page page = Page.findById(sentence.page.id);
             Book book = Book.findById(page.book.id);
-            redirect("http://translate.google.com/translate_tts?tl="+book.language.iso+"&q="+sentence.text);
+            Language language = Language.findById(book.language.id);
+            redirect("http://translate.google.com/translate_tts?tl="+language.iso+"&q="+sentence.text);
         }
     }
 }

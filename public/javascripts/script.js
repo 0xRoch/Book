@@ -26,17 +26,25 @@ var App = {
     }).submit();
   },
 
+  loadAudio: function(page) {
+      $('#page-'+page+' .sentence').each(function(a) {
+          App.playlist.add({
+            mp3: $(this).data('audio')
+          });
+      });
+  },
+
   lazyLoad: function() {
     $('.lazyLoad').each(function(a) {
         $(this).removeClass('lazyLoad');
         var href = $(this).data('url');
         $(this).load(href, function(XMLHttpRequest) {
+            $(this).children('#page-0 .sentence').each(function(a) {
+                App.playlist.add({
+                  mp3: $(this).data('audio')
+                });
+            });
             App.lazyLoad();
-        });
-    });
-    $('.sentence').each(function(a) {
-        App.playlist.add({
-          mp3: $(this).data('audio')
         });
     });
   },
@@ -137,17 +145,21 @@ var App = {
 
         $('.prevPage').click( function(e) {
           e.preventDefault();
+          App.playlist.remove();
           flips[page].target = 1;
           page = Math.max( page - 1, 0 );
           flips[page].dragging = false;
+          App.loadAudio(page);
         });
 
         $('.nextPage').click( function(e) {
           e.preventDefault();
           if (page + 1 < flips.length) {
+              App.playlist.remove();
               flips[page].target = -1;
               page = Math.min( page + 1, flips.length );
               flips[page].dragging = false;
+              App.loadAudio(page);
           }
         });
     }
