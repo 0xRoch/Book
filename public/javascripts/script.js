@@ -2,6 +2,8 @@ $(function(){
   App.init();
 });
 
+var page = 0;
+
 var App = {
   playlist: [],
 
@@ -18,6 +20,14 @@ var App = {
           $('#notification').fadeOut('fast');
           $('#notification').remove();
       }, 5000);
+  },
+
+  highlight: function(page, sentence) {
+    $('.highlight:visible').each(function() {
+        $(this).hide();
+    });
+    elem = $('#page-'+page).children('#sentence-'+sentence).children('.highlight');
+    elem.fadeIn('fast');
   },
 
   upload: function(elem) {
@@ -94,8 +104,6 @@ var App = {
 	
   	// The canvas size equals to the book dimensions + this padding
   	var CANVAS_PADDING = 60;
-  	
-  	var page = 0;
   	
   	var canvas = document.getElementById( "pages-canvas" );
 
@@ -327,7 +335,10 @@ var App = {
       }, [], {
           swfPath: "js",
           supplied: "oga, mp3",
-          wmode: "window"
+          wmode: "window",
+          play: function () {
+            App.highlight(page, App.playlist.current);
+          }
       });
   }
 }

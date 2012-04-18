@@ -10,6 +10,6 @@
 
 %{int sentenceCount = 0}%
 #{list items:sentences, as:'sentence'}
-    <span id="sentence-${sentenceCount}" class="lazyLoad sentence" data-audio="@{Application.audio(sentence.id)}">${sentence.text}</span>
+    <span id="sentence-${sentenceCount}" class="lazyLoad sentence" data-audio="@{Application.audio(sentence.id)}"><span class="highlight">&nbsp;</span>${sentence.text}</span>
 %{sentenceCount++}%
 #{/list}
