@@ -44,6 +44,7 @@ public class Application extends Controller {
             URL url = new URL("http://translate.google.com/translate_tts?tl="+language.iso+"&q="+URLEncoder.encode(sentence.text, "UTF-8"));
             URLConnection conn =  url.openConnection();
             conn.addRequestProperty("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)");
+            response.cacheFor("168h");
             renderBinary(new BufferedInputStream(conn.getInputStream()), "audio", "audio/mpeg", true);
         }
     }

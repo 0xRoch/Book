@@ -333,8 +333,8 @@ var App = {
           jPlayer: "#audio",
           cssSelectorAncestor: "#audio-container"
       }, [], {
-          swfPath: "js",
-          supplied: "oga, mp3",
+          swfPath: "/public/javascripts",
+          supplied: "mp3",
           wmode: "window",
           play: function () {
             App.highlight(page, App.playlist.current);

@@ -50,6 +50,7 @@ public class Admin extends Controller {
         }
         Language language = Language.findById(languageId);
         currentBook.language = language;
+        currentBook.name = name;
         currentBook.update();
         book(currentBook.id);
     }
