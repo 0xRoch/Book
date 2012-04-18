@@ -1,20 +1,11 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import com.google.appengine.api.datastore.Blob;
-import play.cache.Cache;
 import siena.*;
-import siena.Id;
-import siena.Index;
-import siena.Model;
-import siena.Query;
-import siena.embed.EmbedIgnore;
-import siena.embed.Embedded;
-import siena.embed.EmbeddedMap;
 import siena.core.lifecycle.PostDelete;
+import siena.embed.EmbedIgnore;
+import siena.embed.EmbeddedMap;
+
+import java.util.List;
 
 @EmbeddedMap
 public class Page extends Model {

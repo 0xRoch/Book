@@ -1,19 +1,11 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import com.google.appengine.repackaged.com.google.common.base.Flag;
-import play.cache.Cache;
 import siena.*;
-import siena.Index;
-import siena.Model;
-import siena.Query;
-import siena.embed.EmbedIgnore;
-import siena.embed.Embedded;
-import siena.embed.EmbeddedMap;
 import siena.core.lifecycle.PostDelete;
+import siena.embed.EmbedIgnore;
+import siena.embed.EmbeddedMap;
+
+import java.util.List;
 
 @EmbeddedMap
 public class Sentence extends Model {

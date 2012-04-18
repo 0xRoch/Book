@@ -1,14 +1,16 @@
 package controllers;
 
-import play.mvc.*;
-import java.io.*;
-import java.net.MalformedURLException;
+import models.*;
+import play.mvc.Controller;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.*;
-
-import models.*;
+import java.util.List;
 
 public class Application extends Controller {
 

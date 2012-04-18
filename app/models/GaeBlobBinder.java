@@ -1,14 +1,14 @@
 package models;
 
-import java.lang.annotation.*;
+import com.google.appengine.api.datastore.Blob;
+import play.data.Upload;
+import play.data.binding.Global;
+import play.data.binding.TypeBinder;
+import play.mvc.Http.Request;
+
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
-
-import com.google.appengine.api.datastore.Blob;
-
-import play.data.Upload;
-import play.data.binding.*;
-import play.mvc.Http.Request;
 
 @Global
 public class GaeBlobBinder implements TypeBinder<Blob> {

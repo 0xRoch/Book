@@ -1,13 +1,13 @@
 package controllers;
 
-import com.google.appengine.api.images.Composite.Anchor;
-import com.google.appengine.api.images.*;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.appengine.api.images.Image;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.Transform;
 import models.Picture;
-import play.Play;
 import play.mvc.Controller;
+
+import java.io.*;
 
 public class Pictures extends Controller {
     
