@@ -1,8 +1,11 @@
 package controllers;
 
-import play.*;
 import play.mvc.*;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.*;
 
 import models.*;
@@ -26,7 +29,7 @@ public class Application extends Controller {
         render(page, sentences);
     }
 
-    public static void audio(Long id) {
+    public static void audio(Long id) throws IOException {
         Sentence sentence = Sentence.findById(id);
         if (sentence.audioHash != 0) {
             Audio audio = Audio.findByAudioHash(sentence.audioHash);
@@ -36,7 +39,10 @@ public class Application extends Controller {
             Page page = Page.findById(sentence.page.id);
             Book book = Book.findById(page.book.id);
             Language language = Language.findById(book.language.id);
-            redirect("http://translate.google.com/translate_tts?tl="+language.iso+"&q="+sentence.text);
+            URL url = new URL("http://translate.google.com/translate_tts?tl="+language.iso+"&q="+URLEncoder.encode(sentence.text, "UTF-8"));
+            URLConnection conn =  url.openConnection();
+            conn.addRequestProperty("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)");
+            renderBinary(new BufferedInputStream(conn.getInputStream()), "audio", "audio/mpeg", true);
         }
     }
 }
