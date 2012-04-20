@@ -10,7 +10,7 @@
         %{int pageCount = 0}%
         #{list items:pages, as:'page'}
             <section style="z-index: 2;">
-                <div id="page-${pageCount}" class="lazyLoad" data-url="@{Application.page(page.id)}"></div>
+                <div id="page-${pageCount}" class="page lazyLoad" data-url="@{Application.page(page.id)}"></div>
             </section>
         %{pageCount++}%
         #{/list}

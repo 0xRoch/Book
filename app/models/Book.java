@@ -1,5 +1,6 @@
 package models;
 
+import play.Logger;
 import siena.*;
 import siena.core.lifecycle.PostDelete;
 import siena.embed.EmbedIgnore;
@@ -54,7 +55,9 @@ public class Book extends Model {
         for (Page page:pages) {
             page.delete();
         }
-        Picture picture = Picture.findByPictureHash(this.pictureHash);
-        picture.delete();
+        if (this.pictureHash != 0) {
+            Picture picture = Picture.findByPictureHash(this.pictureHash);
+            picture.delete();
+        }
     }
 }

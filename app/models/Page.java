@@ -1,5 +1,6 @@
 package models;
 
+import play.Logger;
 import siena.*;
 import siena.core.lifecycle.PostDelete;
 import siena.embed.EmbedIgnore;
@@ -28,6 +29,8 @@ public class Page extends Model {
     @Index("pictureHash3")
     public int pictureHash3;
 
+    public int layout;
+
     public Page(Book book) {
         this.book = book;
     }
@@ -51,11 +54,17 @@ public class Page extends Model {
         for (Sentence sentence:sentences) {
             sentence.delete();
         }
-        Picture picture1 = Picture.findByPictureHash(this.pictureHash1);
-        picture1.delete();
-        Picture picture2 = Picture.findByPictureHash(this.pictureHash2);
-        picture2.delete();
-        Picture picture3 = Picture.findByPictureHash(this.pictureHash3);
-        picture3.delete();
+        if (this.pictureHash1 != 0) {
+            Picture picture1 = Picture.findByPictureHash(this.pictureHash1);
+            picture1.delete();
+        }
+        if (this.pictureHash2 != 0) {
+            Picture picture2 = Picture.findByPictureHash(this.pictureHash2);
+            picture2.delete();
+        }
+        if (this.pictureHash3 != 0) {
+            Picture picture3 = Picture.findByPictureHash(this.pictureHash3);
+            picture3.delete();
+        }
     }
 }

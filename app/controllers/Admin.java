@@ -74,6 +74,12 @@ public class Admin extends Controller {
         book(id);
     }
 
+    public static void updateLayout(Long id, int layout) {
+        Page page = Page.findById(id);
+        page.layout = layout;
+        page.update();
+    }
+
     public static void deletePage(Long id) {
         Page page = Page.findById(id);
         Long bookId = page.book.id;

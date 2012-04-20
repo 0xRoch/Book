@@ -1,12 +1,14 @@
-#{if page.pictureHash1 != 0}
-    <img class="thumbnail" src="@{Pictures.showThumb(page.pictureHash1)}" />
-#{/if}
-#{if page.pictureHash2 != 0}
-    <img class="thumbnail" src="@{Pictures.showThumb(page.pictureHash2)}" />
-#{/if}
-#{if page.pictureHash3 != 0}
-    <img class="thumbnail" src="@{Pictures.showThumb(page.pictureHash3)}" />
-#{/if}
+<div class="layout-${page.layout}">
+    #{if page.pictureHash1 != 0}
+        <img class="thumbnail" src="@{Pictures.showThumb(page.pictureHash1)}" />
+    #{/if}
+    #{if page.pictureHash2 != 0}
+        <img class="thumbnail" src="@{Pictures.showThumb(page.pictureHash2)}" />
+    #{/if}
+    #{if page.pictureHash3 != 0}
+        <img class="thumbnail" src="@{Pictures.showThumb(page.pictureHash3)}" />
+    #{/if}
+</div>
 
 %{int sentenceCount = 0}%
 #{list items:sentences, as:'sentence'}
