@@ -50,6 +50,15 @@
                 <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
                 <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
             </ul>
+            <div class="pagination">
+                <ul>
+                  %{int p = 0}%
+                  #{list items:pages, as:'page'}
+                      %{p++}%
+                      <li><a class="goTo" href="javascript:;" data-page="${p}">${p}</a></li>
+                  #{/list}
+                </ul>
+            </div>
         </div>
     </div>
 </div>

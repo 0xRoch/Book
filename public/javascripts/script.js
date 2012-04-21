@@ -170,6 +170,28 @@ var App = {
               App.loadAudio(page);
           }
         });
+
+        $('.goTo').click( function(e) {
+            e.preventDefault();
+            App.playlist.remove();
+            nextPage = $(this).data('page')-1;
+            if (nextPage < page) {
+                target = page - nextPage;
+                for( var i = -1; i < target; i++ ) {
+                    flips[page].target = 1;
+                    page = Math.max( page - 1, 0 );
+                    flips[page].dragging = false;
+                }
+            } else {
+                target = nextPage - page;
+                for( var i = 0; i < target; i++ ) {
+                    flips[page].target = -1;
+                    page = Math.min( page + 1, flips.length );
+                    flips[page].dragging = false;
+                }
+            }
+            App.loadAudio(page);
+        });
     }
 
   	function mouseMoveHandler( event ) {

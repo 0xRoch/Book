@@ -108,6 +108,7 @@ div.jp-interface ul.jp-controls {
 div.jp-audio ul.jp-controls {
 	width: 380px;
 	padding:20px 20px 0 20px;
+    float:left;
 }
 
 div.jp-video div.jp-type-single ul.jp-controls {
