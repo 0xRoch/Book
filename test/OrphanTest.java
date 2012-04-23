@@ -26,7 +26,6 @@ public class OrphanTest extends UnitTest {
         book.delete();
 
         assertEquals(0, Page.listByBook(bookId).size());
-        //assertEquals(0, Sentence.listByPage(pageId).size());
 
     }
 
