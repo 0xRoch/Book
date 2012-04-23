@@ -44,6 +44,10 @@ public class Book extends Model {
     	return all().order("name").fetch();
     }
 
+    public static List<Book> books(Language language) {
+        return all().filter("language", language).order("name").fetch();
+    }
+
     @Override
     public String toString() {
         return name;

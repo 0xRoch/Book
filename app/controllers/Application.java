@@ -1,6 +1,7 @@
 package controllers;
 
 import models.*;
+import play.Logger;
 import play.mvc.Controller;
 
 import java.io.BufferedInputStream;
@@ -14,15 +15,23 @@ import java.util.List;
 
 public class Application extends Controller {
 
-    public static void index() {
-        List<Book> books = Book.books();
-        render(books);
+    public static void index(String language) {
+        List<Book> books;
+        if (language == null) {
+            books = Book.books();
+        } else {
+            Language lang = Language.findByName(language);
+            books = Book.books(lang);
+        }
+        List<Language> languages = Language.languages();
+        render(books, languages);
     }
 
     public static void book(Long id) {
         Book book = Book.findById(id);
         List<Page> pages = Page.listByBook(id);
-        render(book, pages);
+        List<Language> languages = Language.languages();
+        render(book, pages, languages);
     }
 
     public static void page(Long id) {

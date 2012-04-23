@@ -34,6 +34,10 @@ public class Language extends Model {
         return all().filter("id", id).get();
     }
 
+    public static Language findByName(String name) {
+        return all().filter("name", name).get();
+    }
+
     public static List<Language> languages() {
     	return all().fetch();
     }

@@ -1,6 +1,27 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
-#{nav /}
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <ul class="nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            #{list items:languages, as:'language'}
+                <li><a href="@{Application.index(language.name)}">${language}</a></li>
+            #{/list}
+          </ul>
+        </li>
+      </ul>
+      <a class="brand" href="@{Application.index}">Mudiad Meithrin Books</a>
+    </div>
+  </div>
+</div>
 <div id="index" class="container">
     <div id="index-container">
         #{list items:books, as:'book'}
