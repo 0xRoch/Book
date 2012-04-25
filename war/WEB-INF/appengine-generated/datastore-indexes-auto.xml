@@ -1,11 +1,4 @@
-<!-- Indices written at Mon, 23 Apr 2012 22:48:15 BST -->
+<!-- Indices written at Wed, 25 Apr 2012 01:51:54 BST -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 1 time in query history -->
-    <datastore-index kind="Book" ancestor="false" source="auto">
-        <property name="language" direction="asc"/>
-        <property name="name" direction="asc"/>
-    </datastore-index>
-
-</datastore-indexes>
