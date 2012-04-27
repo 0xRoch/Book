@@ -157,9 +157,17 @@ var App = {
         // Render the page flip 60 times a second
         setInterval( render, 1000 / 60 );
 
-        document.addEventListener( "mousemove", mouseMoveHandler, false );
-        document.addEventListener( "mousedown", mouseDownHandler, false );
-        document.addEventListener( "mouseup", mouseUpHandler, false );
+        // for IE compatability
+        if (!document.addEventListener) {
+            document.attachEvent("mousemove", mouseMoveHandler);
+            document.attachEvent("mousedown", mouseDownHandler);
+            document.attachEvent("mouseup", mouseUpHandler);
+        }
+        else {
+            document.addEventListener( "mousemove", mouseMoveHandler, false );
+            document.addEventListener( "mousedown", mouseDownHandler, false );
+            document.addEventListener( "mouseup", mouseUpHandler, false );
+        }
 
         $('.prevPage').click( function(e) {
           e.preventDefault();
