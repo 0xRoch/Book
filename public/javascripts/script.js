@@ -113,6 +113,7 @@ var App = {
         canvas.setAttribute("id", "pages-canvas");
         book.appendChild(canvas);
 
+        var G_vmlCanvasManager;
         if (G_vmlCanvasManager != undefined) { // ie IE
             G_vmlCanvasManager.initElement(canvas);
         }
