@@ -114,14 +114,13 @@ var App = {
         book.appendChild(canvas);
 
         var G_vmlCanvasManager;
-        if (G_vmlCanvasManager != undefined) { // ie IE
+        if (typeof G_vmlCanvasManager != 'undefined') { // ie IE
             G_vmlCanvasManager.initElement(canvas);
         }
 
         if (canvas.getContext) {
             var context = canvas.getContext( "2d" );
         }
-
 
         var mouse = { x: 0, y: 0 };
 
