@@ -105,17 +105,20 @@ var App = {
   	// The canvas size equals to the book dimensions + this padding
   	var CANVAS_PADDING = 60;
   	
-  	var canvas = document.getElementById( "pages-canvas" );
+  	var book = document.getElementById("book");
 
-    if (canvas != undefined) {
+    if (book != undefined) {
+
+        var canvas = document.createElement('canvas');
+        canvas.setAttribute("id", "pages-canvas");
+        book.appendChild(canvas);
+        //canvas = G_vmlCanvasManager.initElement(canvas);
 
         var context = canvas.getContext( "2d" );
 
         var mouse = { x: 0, y: 0 };
 
         var flips = [];
-
-        var book = document.getElementById( "book" );
 
         // List of all the page elements in the DOM
         var pages = book.getElementsByTagName( "section" );
