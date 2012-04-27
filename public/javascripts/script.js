@@ -115,7 +115,7 @@ var App = {
 
         var G_vmlCanvasManager;
         if (typeof G_vmlCanvasManager != 'undefined') { // ie IE
-            canvas = G_vmlCanvasManager.initElement(canvas);
+            G_vmlCanvasManager.initElement(canvas);
         }
 
         if (canvas.getContext) {
