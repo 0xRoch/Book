@@ -118,7 +118,10 @@ var App = {
             G_vmlCanvasManager.initElement(canvas);
         }
 
-        var context = canvas.getContext( "2d" );
+        if (canvas.getContext) {
+            var context = canvas.getContext( "2d" );
+        }
+
 
         var mouse = { x: 0, y: 0 };
 
