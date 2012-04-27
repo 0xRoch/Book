@@ -112,7 +112,11 @@ var App = {
         var canvas = document.createElement('canvas');
         canvas.setAttribute("id", "pages-canvas");
         book.appendChild(canvas);
-        //canvas = G_vmlCanvasManager.initElement(canvas);
+
+        var G_vmlCanvasManager;
+        if (G_vmlCanvasManager != undefined) { // ie IE
+            G_vmlCanvasManager.initElement(canvas);
+        }
 
         var context = canvas.getContext( "2d" );
 
