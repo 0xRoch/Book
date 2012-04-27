@@ -3,7 +3,6 @@ $(function(){
 });
 
 var page = 0;
-var canvas = document.createElement('canvas');
 var App = {
   playlist: [],
 
@@ -84,6 +83,7 @@ var App = {
             success:function() {
                 $('#page-container').load(href, function(XMLHttpRequest) {
                     App.admin('#page-container')
+                    App.notify("Modification saved")
                 });
             }
         });

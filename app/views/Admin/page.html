@@ -10,13 +10,14 @@
 </form>
 
 <h3>Pick a layout :</h3>
-<form class="adminCallback" data-callback="@{Admin.page(page.id)}" action="@{Admin.updateLayout}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form class="adminCallback" data-callback="@{Admin.page(page.id, p)}" action="@{Admin.updateLayout}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${page.id}" />
-    <select name="layout" onchange="this.form.submit()">
+    <select name="layout">
         <option value="0" #{if page.layout == 0}selected="selected"#{/if}>Top left corner</option>
         <option value="1" #{if page.layout == 1}selected="selected"#{/if}>Left column</option>
         <option value="2" #{if page.layout == 2}selected="selected"#{/if}>Top center</option>
     </select>
+    <input type="submit" class="btn btn-success primary" value="Save"/>
 </form>
 
 <h3>Upload up to 3 pictures :</h3>
