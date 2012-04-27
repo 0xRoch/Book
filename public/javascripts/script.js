@@ -3,7 +3,7 @@ $(function(){
 });
 
 var page = 0;
-
+var canvas = document.createElement('canvas');
 var App = {
   playlist: [],
 
